@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.Remoting.Channels;
@@ -209,13 +210,6 @@ namespace PLCEmulator
 			analogInputTextBoxes[channel].Text = ((double)trackBar.Value / 100).ToString("0.000");
 		}
 
-		private void button1_Click(object sender, EventArgs e)
-		{
-			Communication.closeSocket = true;
-			Thread.Sleep(1000);
-			Close();
-		}
-
 		private void inputGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
 		{
 			if(e.RowIndex < 0 || e.ColumnIndex < 2) return;
@@ -260,6 +254,12 @@ namespace PLCEmulator
 				size += SystemInformation.VerticalScrollBarWidth;
 			}
 			outputPanel.Width = size + outputPanel.Padding.Right + outputPanel.Padding.Left;
+		}
+
+		private void PLCForm_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			Communication.closeSocket = true;
+			Communication.listener.Close();
 		}
 	}
 }

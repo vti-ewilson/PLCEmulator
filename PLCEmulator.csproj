@@ -93,5 +93,8 @@
   <ItemGroup>
     <None Include="Resources\plcemuicon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blueoval.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

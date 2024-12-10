@@ -73,13 +73,14 @@ namespace PLCEmulator
 	internal class Communication
 	{
 		public static bool closeSocket = false;
+		public static Socket listener;
 		public static void ExecuteServer()
 		{
 			IPHostEntry ipHost = Dns.GetHostEntry("127.0.0.1");
 			IPAddress ipAddr = ipHost.AddressList[0];
 			IPEndPoint localEndPoint = new IPEndPoint(ipAddr, 502);
 
-			Socket listener = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+			listener = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
 			listener.Bind(localEndPoint);
 
@@ -90,7 +91,16 @@ namespace PLCEmulator
 
 				Console.WriteLine("Waiting connection ... ");
 
-				Socket clientSocket = listener.Accept();
+				Socket clientSocket;
+				try
+				{
+					clientSocket = listener.Accept();
+				}
+				catch(Exception ex)
+				{
+					Console.WriteLine("Listener Socket Closed ... ");
+					break;
+				}
 
 				try
 				{
@@ -172,8 +182,6 @@ namespace PLCEmulator
 							response[12] = inputValue[2];
 							IO.analogInputMutex.ReleaseMutex();
 
-							Console.WriteLine("addr -> {0} ", address);
-
 						}
 
 						string str = BitConverter.ToString(bytes, 0, numByte);
@@ -185,13 +193,15 @@ namespace PLCEmulator
 				}
 				catch(Exception ex)
 				{
+					Console.WriteLine("Closing connection, Exception: " + ex.Message);
 
 				}
 				clientSocket.Shutdown(SocketShutdown.Both);
 				clientSocket.Close();
 
-				if(Application.OpenForms.Count == 0) break;
+				if(Application.OpenForms.Count == 0) break; // dont look for new connections if form is closed
 			}
+			listener.Close();
 		}
 	}
 }
