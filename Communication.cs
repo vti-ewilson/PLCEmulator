@@ -118,7 +118,7 @@ namespace PLCEmulator
 							int outputNumber = DigitalInputOutput.getNumberFromAddress(address);
 							bool value;
 							List<DigitalInputOutput> outputsAtAddress = new List<DigitalInputOutput>();
-
+							response = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 							// store output values in list
 							for(int i = 0; i < 8; i++)
 							{
@@ -181,6 +181,11 @@ namespace PLCEmulator
 							response[11] = inputValue[3];
 							response[12] = inputValue[2];
 							IO.analogInputMutex.ReleaseMutex();
+
+						}
+						else if(bytes[7] == 16) // reading digital outputs
+						{
+							response = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
 						}
 

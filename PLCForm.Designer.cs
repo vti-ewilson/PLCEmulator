@@ -63,11 +63,15 @@
 			this.outputPanel = new System.Windows.Forms.Panel();
 			this.label2 = new System.Windows.Forms.Label();
 			this.outerAnalogInputPanel = new System.Windows.Forms.Panel();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.label3 = new System.Windows.Forms.Label();
+			this.panel2 = new System.Windows.Forms.Panel();
 			((System.ComponentModel.ISupportInitialize)(this.outputGrid)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.inputGrid)).BeginInit();
 			this.inputPanel.SuspendLayout();
 			this.outputPanel.SuspendLayout();
 			this.outerAnalogInputPanel.SuspendLayout();
+			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// timer1
@@ -258,12 +262,12 @@
 			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 			this.inputGrid.DefaultCellStyle = dataGridViewCellStyle4;
 			this.inputGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.inputGrid.Location = new System.Drawing.Point(40, 90);
+			this.inputGrid.Location = new System.Drawing.Point(40, 200);
 			this.inputGrid.Name = "inputGrid";
 			this.inputGrid.RowHeadersVisible = false;
 			this.inputGrid.RowHeadersWidth = 62;
 			this.inputGrid.RowTemplate.Height = 28;
-			this.inputGrid.Size = new System.Drawing.Size(428, 882);
+			this.inputGrid.Size = new System.Drawing.Size(428, 772);
 			this.inputGrid.TabIndex = 3;
 			this.inputGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.inputGrid_CellValueChanged);
 			this.inputGrid.CurrentCellDirtyStateChanged += new System.EventHandler(this.inputGrid_CurrentCellDirtyStateChanged);
@@ -367,7 +371,7 @@
 			this.label1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
-			this.label1.Location = new System.Drawing.Point(40, 40);
+			this.label1.Location = new System.Drawing.Point(40, 150);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(428, 50);
 			this.label1.TabIndex = 4;
@@ -401,6 +405,8 @@
 			// 
 			this.inputPanel.Controls.Add(this.inputGrid);
 			this.inputPanel.Controls.Add(this.label1);
+			this.inputPanel.Controls.Add(this.panel2);
+			this.inputPanel.Controls.Add(this.panel1);
 			this.inputPanel.Dock = System.Windows.Forms.DockStyle.Left;
 			this.inputPanel.Location = new System.Drawing.Point(0, 0);
 			this.inputPanel.Name = "inputPanel";
@@ -442,6 +448,38 @@
 			this.outerAnalogInputPanel.Size = new System.Drawing.Size(770, 1012);
 			this.outerAnalogInputPanel.TabIndex = 15;
 			// 
+			// panel1
+			// 
+			this.panel1.BackgroundImage = global::PLCEmulator.Properties.Resources.blueoval;
+			this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.panel1.Controls.Add(this.label3);
+			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel1.Location = new System.Drawing.Point(40, 40);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(428, 100);
+			this.panel1.TabIndex = 5;
+			// 
+			// label3
+			// 
+			this.label3.BackColor = System.Drawing.Color.Transparent;
+			this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label3.ForeColor = System.Drawing.SystemColors.Control;
+			this.label3.Location = new System.Drawing.Point(0, 0);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(428, 100);
+			this.label3.TabIndex = 0;
+			this.label3.Text = "PLC Emulator";
+			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// panel2
+			// 
+			this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel2.Location = new System.Drawing.Point(40, 140);
+			this.panel2.Name = "panel2";
+			this.panel2.Size = new System.Drawing.Size(428, 10);
+			this.panel2.TabIndex = 6;
+			// 
 			// PLCForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -460,6 +498,7 @@
 			this.inputPanel.ResumeLayout(false);
 			this.outputPanel.ResumeLayout(false);
 			this.outerAnalogInputPanel.ResumeLayout(false);
+			this.panel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -496,6 +535,9 @@
 		private System.Windows.Forms.Panel outputPanel;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Panel outerAnalogInputPanel;
+		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Panel panel2;
 	}
 }
 
