@@ -29,10 +29,10 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.outputGrid = new System.Windows.Forms.DataGridView();
 			this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,18 +60,23 @@
 			this.analogInputPanel = new System.Windows.Forms.Panel();
 			this.analogInputsLabel = new System.Windows.Forms.Label();
 			this.inputPanel = new System.Windows.Forms.Panel();
+			this.panel3 = new System.Windows.Forms.Panel();
+			this.panel2 = new System.Windows.Forms.Panel();
+			this.folderNameLabel = new System.Windows.Forms.Label();
+			this.configSelectButton = new System.Windows.Forms.Button();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.label3 = new System.Windows.Forms.Label();
 			this.outputPanel = new System.Windows.Forms.Panel();
 			this.label2 = new System.Windows.Forms.Label();
 			this.outerAnalogInputPanel = new System.Windows.Forms.Panel();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.label3 = new System.Windows.Forms.Label();
-			this.panel2 = new System.Windows.Forms.Panel();
+			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			((System.ComponentModel.ISupportInitialize)(this.outputGrid)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.inputGrid)).BeginInit();
 			this.inputPanel.SuspendLayout();
+			this.panel2.SuspendLayout();
+			this.panel1.SuspendLayout();
 			this.outputPanel.SuspendLayout();
 			this.outerAnalogInputPanel.SuspendLayout();
-			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// timer1
@@ -86,14 +91,14 @@
 			this.outputGrid.AllowUserToResizeColumns = false;
 			this.outputGrid.AllowUserToResizeRows = false;
 			this.outputGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.outputGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.outputGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
 			this.outputGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.outputGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Y,
@@ -106,22 +111,22 @@
             this.Column6,
             this.Column7,
             this.Column8});
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.outputGrid.DefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.outputGrid.DefaultCellStyle = dataGridViewCellStyle6;
 			this.outputGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.outputGrid.Location = new System.Drawing.Point(40, 90);
+			this.outputGrid.Location = new System.Drawing.Point(30, 80);
 			this.outputGrid.Name = "outputGrid";
 			this.outputGrid.RowHeadersVisible = false;
 			this.outputGrid.RowHeadersWidth = 62;
 			this.outputGrid.RowTemplate.Height = 28;
 			this.outputGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-			this.outputGrid.Size = new System.Drawing.Size(373, 882);
+			this.outputGrid.Size = new System.Drawing.Size(393, 902);
 			this.outputGrid.TabIndex = 2;
 			this.outputGrid.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.outputGrid_RowPostPaint);
 			// 
@@ -233,14 +238,14 @@
 			this.inputGrid.AllowUserToResizeColumns = false;
 			this.inputGrid.AllowUserToResizeRows = false;
 			this.inputGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.inputGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.inputGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
 			this.inputGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.inputGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.X,
@@ -253,21 +258,21 @@
             this.dataGridViewCheckBoxColumn6,
             this.dataGridViewCheckBoxColumn7,
             this.dataGridViewCheckBoxColumn8});
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.inputGrid.DefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.inputGrid.DefaultCellStyle = dataGridViewCellStyle8;
 			this.inputGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.inputGrid.Location = new System.Drawing.Point(40, 200);
+			this.inputGrid.Location = new System.Drawing.Point(30, 190);
 			this.inputGrid.Name = "inputGrid";
 			this.inputGrid.RowHeadersVisible = false;
 			this.inputGrid.RowHeadersWidth = 62;
 			this.inputGrid.RowTemplate.Height = 28;
-			this.inputGrid.Size = new System.Drawing.Size(428, 772);
+			this.inputGrid.Size = new System.Drawing.Size(448, 722);
 			this.inputGrid.TabIndex = 3;
 			this.inputGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.inputGrid_CellValueChanged);
 			this.inputGrid.CurrentCellDirtyStateChanged += new System.EventHandler(this.inputGrid_CurrentCellDirtyStateChanged);
@@ -371,9 +376,9 @@
 			this.label1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
-			this.label1.Location = new System.Drawing.Point(40, 150);
+			this.label1.Location = new System.Drawing.Point(30, 140);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(428, 50);
+			this.label1.Size = new System.Drawing.Size(448, 50);
 			this.label1.TabIndex = 4;
 			this.label1.Text = "Inputs";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -384,9 +389,9 @@
 			this.analogInputPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
 			this.analogInputPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.analogInputPanel.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.analogInputPanel.Location = new System.Drawing.Point(40, 90);
+			this.analogInputPanel.Location = new System.Drawing.Point(30, 80);
 			this.analogInputPanel.Name = "analogInputPanel";
-			this.analogInputPanel.Size = new System.Drawing.Size(690, 882);
+			this.analogInputPanel.Size = new System.Drawing.Size(710, 902);
 			this.analogInputPanel.TabIndex = 7;
 			// 
 			// analogInputsLabel
@@ -394,9 +399,9 @@
 			this.analogInputsLabel.Dock = System.Windows.Forms.DockStyle.Top;
 			this.analogInputsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.analogInputsLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
-			this.analogInputsLabel.Location = new System.Drawing.Point(40, 40);
+			this.analogInputsLabel.Location = new System.Drawing.Point(30, 30);
 			this.analogInputsLabel.Name = "analogInputsLabel";
-			this.analogInputsLabel.Size = new System.Drawing.Size(690, 50);
+			this.analogInputsLabel.Size = new System.Drawing.Size(710, 50);
 			this.analogInputsLabel.TabIndex = 8;
 			this.analogInputsLabel.Text = "Analog Inputs";
 			this.analogInputsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -405,14 +410,83 @@
 			// 
 			this.inputPanel.Controls.Add(this.inputGrid);
 			this.inputPanel.Controls.Add(this.label1);
+			this.inputPanel.Controls.Add(this.panel3);
 			this.inputPanel.Controls.Add(this.panel2);
 			this.inputPanel.Controls.Add(this.panel1);
 			this.inputPanel.Dock = System.Windows.Forms.DockStyle.Left;
 			this.inputPanel.Location = new System.Drawing.Point(0, 0);
 			this.inputPanel.Name = "inputPanel";
-			this.inputPanel.Padding = new System.Windows.Forms.Padding(40);
+			this.inputPanel.Padding = new System.Windows.Forms.Padding(30);
 			this.inputPanel.Size = new System.Drawing.Size(508, 1012);
 			this.inputPanel.TabIndex = 13;
+			// 
+			// panel3
+			// 
+			this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel3.Location = new System.Drawing.Point(30, 130);
+			this.panel3.Margin = new System.Windows.Forms.Padding(10);
+			this.panel3.Name = "panel3";
+			this.panel3.Padding = new System.Windows.Forms.Padding(15);
+			this.panel3.Size = new System.Drawing.Size(448, 10);
+			this.panel3.TabIndex = 7;
+			// 
+			// panel2
+			// 
+			this.panel2.Controls.Add(this.folderNameLabel);
+			this.panel2.Controls.Add(this.configSelectButton);
+			this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.panel2.Location = new System.Drawing.Point(30, 912);
+			this.panel2.Margin = new System.Windows.Forms.Padding(10);
+			this.panel2.Name = "panel2";
+			this.panel2.Padding = new System.Windows.Forms.Padding(15, 30, 15, 0);
+			this.panel2.Size = new System.Drawing.Size(448, 70);
+			this.panel2.TabIndex = 6;
+			// 
+			// folderNameLabel
+			// 
+			this.folderNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.folderNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.folderNameLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.folderNameLabel.Location = new System.Drawing.Point(15, 30);
+			this.folderNameLabel.Name = "folderNameLabel";
+			this.folderNameLabel.Size = new System.Drawing.Size(285, 40);
+			this.folderNameLabel.TabIndex = 1;
+			this.folderNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// configSelectButton
+			// 
+			this.configSelectButton.Dock = System.Windows.Forms.DockStyle.Right;
+			this.configSelectButton.Location = new System.Drawing.Point(300, 30);
+			this.configSelectButton.Name = "configSelectButton";
+			this.configSelectButton.Size = new System.Drawing.Size(133, 40);
+			this.configSelectButton.TabIndex = 0;
+			this.configSelectButton.Text = "Select Config";
+			this.configSelectButton.UseVisualStyleBackColor = true;
+			this.configSelectButton.Click += new System.EventHandler(this.configSelectButton_Click);
+			// 
+			// panel1
+			// 
+			this.panel1.BackgroundImage = global::PLCEmulator.Properties.Resources.blueoval;
+			this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.panel1.Controls.Add(this.label3);
+			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel1.Location = new System.Drawing.Point(30, 30);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(448, 100);
+			this.panel1.TabIndex = 5;
+			// 
+			// label3
+			// 
+			this.label3.BackColor = System.Drawing.Color.Transparent;
+			this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label3.ForeColor = System.Drawing.SystemColors.Control;
+			this.label3.Location = new System.Drawing.Point(0, 0);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(448, 100);
+			this.label3.TabIndex = 0;
+			this.label3.Text = "PLC Emulator";
+			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// outputPanel
 			// 
@@ -421,7 +495,7 @@
 			this.outputPanel.Dock = System.Windows.Forms.DockStyle.Left;
 			this.outputPanel.Location = new System.Drawing.Point(508, 0);
 			this.outputPanel.Name = "outputPanel";
-			this.outputPanel.Padding = new System.Windows.Forms.Padding(40);
+			this.outputPanel.Padding = new System.Windows.Forms.Padding(30);
 			this.outputPanel.Size = new System.Drawing.Size(453, 1012);
 			this.outputPanel.TabIndex = 14;
 			// 
@@ -430,9 +504,9 @@
 			this.label2.Dock = System.Windows.Forms.DockStyle.Top;
 			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label2.ForeColor = System.Drawing.SystemColors.ControlLight;
-			this.label2.Location = new System.Drawing.Point(40, 40);
+			this.label2.Location = new System.Drawing.Point(30, 30);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(373, 50);
+			this.label2.Size = new System.Drawing.Size(393, 50);
 			this.label2.TabIndex = 5;
 			this.label2.Text = "Outputs";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -444,41 +518,14 @@
 			this.outerAnalogInputPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.outerAnalogInputPanel.Location = new System.Drawing.Point(961, 0);
 			this.outerAnalogInputPanel.Name = "outerAnalogInputPanel";
-			this.outerAnalogInputPanel.Padding = new System.Windows.Forms.Padding(40);
+			this.outerAnalogInputPanel.Padding = new System.Windows.Forms.Padding(30);
 			this.outerAnalogInputPanel.Size = new System.Drawing.Size(770, 1012);
 			this.outerAnalogInputPanel.TabIndex = 15;
 			// 
-			// panel1
+			// openFileDialog1
 			// 
-			this.panel1.BackgroundImage = global::PLCEmulator.Properties.Resources.blueoval;
-			this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.panel1.Controls.Add(this.label3);
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel1.Location = new System.Drawing.Point(40, 40);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(428, 100);
-			this.panel1.TabIndex = 5;
-			// 
-			// label3
-			// 
-			this.label3.BackColor = System.Drawing.Color.Transparent;
-			this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.ForeColor = System.Drawing.SystemColors.Control;
-			this.label3.Location = new System.Drawing.Point(0, 0);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(428, 100);
-			this.label3.TabIndex = 0;
-			this.label3.Text = "PLC Emulator";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// panel2
-			// 
-			this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel2.Location = new System.Drawing.Point(40, 140);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(428, 10);
-			this.panel2.TabIndex = 6;
+			this.openFileDialog1.Filter = "Config files|*.config";
+			this.openFileDialog1.FilterIndex = 0;
 			// 
 			// PLCForm
 			// 
@@ -496,9 +543,10 @@
 			((System.ComponentModel.ISupportInitialize)(this.outputGrid)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.inputGrid)).EndInit();
 			this.inputPanel.ResumeLayout(false);
+			this.panel2.ResumeLayout(false);
+			this.panel1.ResumeLayout(false);
 			this.outputPanel.ResumeLayout(false);
 			this.outerAnalogInputPanel.ResumeLayout(false);
-			this.panel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -538,6 +586,10 @@
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Panel panel2;
+		private System.Windows.Forms.Button configSelectButton;
+		private System.Windows.Forms.Label folderNameLabel;
+		private System.Windows.Forms.Panel panel3;
+		private System.Windows.Forms.OpenFileDialog openFileDialog1;
 	}
 }
 

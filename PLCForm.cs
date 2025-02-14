@@ -4,12 +4,14 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace PLCEmulator
 {
@@ -28,7 +30,8 @@ namespace PLCEmulator
 		}
 		private void Form1_Load(object sender, EventArgs e)
 		{
-
+			openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\source\\repos";
+			openFileDialog1.RestoreDirectory = true;
 		}
 
 		// Make copy of outputs dict to release mutex faster
@@ -129,7 +132,7 @@ namespace PLCEmulator
 					analogInputLabels[ind].BackColor = Color.Transparent;
 					analogInputLabels[ind].Name = "inputLabel" + ind.ToString();
 					analogInputLabels[ind].TabIndex = 2*ind;
-					analogInputLabels[ind].TextAlign = ContentAlignment.MiddleCenter;
+					analogInputLabels[ind].TextAlign = ContentAlignment.MiddleLeft;
 
 					#endregion
 
@@ -261,5 +264,41 @@ namespace PLCEmulator
 			Communication.closeSocket = true;
 			Communication.listener.Close();
 		}
+
+		private void configSelectButton_Click(object sender, EventArgs e)
+		{
+			if(openFileDialog1.ShowDialog() == DialogResult.OK)
+			{
+				//Get the path of specified file
+				string filePath = openFileDialog1.FileName;
+
+				//Read the contents of the file into a stream
+				var fileStream = openFileDialog1.OpenFile();
+				string fileFolder = Directory.GetParent(filePath).Name;
+
+				try
+				{
+					XmlSerializer xmlSerializer = new XmlSerializer(typeof(MccConfig));
+					MccConfig mcc = (MccConfig)xmlSerializer.Deserialize(fileStream);
+					AnalogInputs inputs = mcc.AnalogBoards.AnalogBoard.AnalogInputs;
+					for(int i = 1; i < inputs.AnalogChannel.Count; i++) // skip ipaddress input
+					{
+						if(i <= analogInputLabels.Count)
+						{
+							analogInputLabels[i-1].Text = inputs.AnalogChannel[i].Name;
+						}
+					}
+					folderNameLabel.Text = fileFolder;
+					folderNameLabel.ForeColor = Color.White;
+				}
+				catch(Exception ex)
+				{
+					folderNameLabel.Text = "XML Parse Error";
+					folderNameLabel.ForeColor = Color.Red;
+					Console.WriteLine(ex.ToString());
+				}
+			}
+		}
 	}
 }
+
