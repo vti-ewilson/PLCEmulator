@@ -39,35 +39,46 @@ namespace PLCEmulator
 		public bool value;
 	}
 
-	class AnalogInput
+	class AnalogInputOutput
 	{
-		public AnalogInput(int address, string name, Single value)
+		public AnalogInputOutput(int address, string name, Single value, bool isOutput)
 		{
 			this.address = address;
-			this.channel = getChannelFromAddress(address);
+			this.channel = getChannelFromAddress(address, isOutput);
 			this.name = name;
 			this.value = value;
+			this.isOutput = isOutput;
 		}
 
-		public static int getChannelFromAddress(int address)
+		public static int getChannelFromAddress(int address, bool isOutput)
 		{
-			return (address / 2) + 1;
+			if(isOutput)
+			{
+				return address  - 19;
+			}
+			else
+			{
+				return (address / 2) + 1;
+			}
 		}
 
 		public int address;
 		public int channel;
 		public string name;
 		public Single value;
+		public bool isOutput;
 	}
 
 	class IO
 	{
 		public static SortedDictionary<int, List<DigitalInputOutput>> outputs = new SortedDictionary<int, List<DigitalInputOutput>>(); //(address, List of outputs at address)
 		public static SortedDictionary<int, List<DigitalInputOutput>> inputs = new SortedDictionary<int, List<DigitalInputOutput>>(); //(address, List of outputs at address)
-		public static SortedDictionary<int, AnalogInput> analogInputs = new SortedDictionary<int, AnalogInput>(); //(address, List of outputs at address)
+		public static SortedDictionary<int, AnalogInputOutput> analogInputs = new SortedDictionary<int, AnalogInputOutput>(); //(address, List of outputs at address)
+		public static SortedDictionary<int, AnalogInputOutput> analogOutputs = new SortedDictionary<int, AnalogInputOutput>(); //(address, List of outputs at address)
 		public static Mutex outputMutex = new Mutex();
 		public static Mutex inputMutex = new Mutex();
 		public static Mutex analogInputMutex = new Mutex();
+		public static Mutex analogOutputMutex = new Mutex();
 	}
 
 	internal class Communication
@@ -76,8 +87,8 @@ namespace PLCEmulator
 		public static Socket listener;
 		public static void ExecuteServer()
 		{
-			IPHostEntry ipHost = Dns.GetHostEntry("127.0.0.1");
-			IPAddress ipAddr = ipHost.AddressList[0];
+			IPHostEntry ipHost = Dns.GetHostEntry("localhost");
+			IPAddress ipAddr = ipHost.AddressList[1];
 			IPEndPoint localEndPoint = new IPEndPoint(ipAddr, 502);
 
 			listener = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
@@ -167,12 +178,12 @@ namespace PLCEmulator
 						{
 							response = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 							address = (int)bytes[9];
-							int channel = AnalogInput.getChannelFromAddress(address);
+							int channel = AnalogInputOutput.getChannelFromAddress(address, false);
 
 							IO.analogInputMutex.WaitOne();
 							if(!IO.analogInputs.ContainsKey(channel))
 							{
-								IO.analogInputs.Add(channel, new AnalogInput(address, "Channel " + channel.ToString(), 0.0f));
+								IO.analogInputs.Add(channel, new AnalogInputOutput(address, "Channel " + channel.ToString(), 0.0f, false));
 							}
 
 							byte[] inputValue = BitConverter.GetBytes(IO.analogInputs[channel].value);
@@ -183,9 +194,19 @@ namespace PLCEmulator
 							IO.analogInputMutex.ReleaseMutex();
 
 						}
-						else if(bytes[7] == 16) // reading digital outputs
+						else if(bytes[7] == 16) // reading analog outputs
 						{
 							response = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+							address = (int)bytes[9];
+							int channel = AnalogInputOutput.getChannelFromAddress(address, true);
+
+							IO.analogOutputMutex.WaitOne();
+							if(!IO.analogOutputs.ContainsKey(channel))
+							{
+								IO.analogOutputs.Add(channel, new AnalogInputOutput(address, "Channel " + channel.ToString(), 0.0f, true));
+							}
+
+							IO.analogOutputMutex.ReleaseMutex();
 
 						}
 

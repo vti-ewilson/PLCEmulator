@@ -20,9 +20,12 @@ namespace PLCEmulator
 		private SortedSet<int> outputRows = new SortedSet<int>();
 		private SortedSet<int> inputRows = new SortedSet<int>();
 		private SortedSet<int> addedAnalogInputs = new SortedSet<int>();
+		private SortedSet<int> addedAnalogOutputs = new SortedSet<int>();
 		private SortedDictionary<int, TextBox> analogInputTextBoxes = new SortedDictionary<int, TextBox>();
+		private SortedDictionary<int, TextBox> analogOutputTextBoxes = new SortedDictionary<int, TextBox>();
 		private SortedDictionary<int, List<DigitalInputOutput>> outputsCopy = new SortedDictionary<int, List<DigitalInputOutput>>();
 		private List<Label> analogInputLabels = new List<Label>();
+		private List<Label> analogOutputLabels = new List<Label>();
 		private SortedDictionary<int, TrackBar> trackBars = new SortedDictionary<int, TrackBar>();
 		public PLCForm()
 		{
@@ -183,6 +186,51 @@ namespace PLCEmulator
 				}
 			}
 			IO.analogInputMutex.ReleaseMutex();
+			#endregion
+
+			#region handling analog outputs
+			IO.analogOutputMutex.WaitOne();
+			foreach(var output in IO.analogOutputs)
+			{
+				if(!addedAnalogOutputs.Contains(output.Key))
+				{
+					addedAnalogOutputs.Add(output.Key);
+					int ind = addedAnalogOutputs.Count - 1;
+
+					#region set label properties
+
+					analogOutputLabels.Add(new Label());
+					analogOutputPanel.Controls.Add(analogOutputLabels[ind]);
+					analogOutputLabels[ind].Location = new Point(30, 130 * ind);
+					analogOutputLabels[ind].Size = new Size(analogOutputPanel.Width - 60, 40);
+					analogOutputLabels[ind].AutoSize = false;
+					analogOutputLabels[ind].Text = output.Value.name;
+					analogOutputLabels[ind].Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+					analogOutputLabels[ind].ForeColor = SystemColors.ControlLight;
+					analogOutputLabels[ind].BackColor = Color.Transparent;
+					analogOutputLabels[ind].Name = "inputLabel" + ind.ToString();
+					analogOutputLabels[ind].TabIndex = 2 * ind;
+					analogOutputLabels[ind].TextAlign = ContentAlignment.MiddleLeft;
+
+					#endregion
+
+					TextBox box = new TextBox();
+					analogOutputTextBoxes.Add(output.Key, box);
+					analogOutputPanel.Controls.Add(box);
+					box.BackColor = SystemColors.ControlDarkDark;
+					box.BorderStyle = BorderStyle.FixedSingle;
+					box.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+					box.ForeColor = SystemColors.Control;
+					box.Location = new Point(analogOutputPanel.Width - 200, (130 * ind) + 5);
+					box.Name = "textBox1";
+					box.Size = new Size(80, 35);
+					box.TabIndex = 10;
+					box.Text = "0.000";
+					box.TextAlign = HorizontalAlignment.Right;
+					box.BringToFront();
+				}
+			}
+			IO.analogOutputMutex.ReleaseMutex();
 			#endregion
 		}
 
