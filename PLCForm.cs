@@ -317,6 +317,7 @@ namespace PLCEmulator
 		{
 			if(openFileDialog1.ShowDialog() == DialogResult.OK)
 			{
+				configSelectButton.Visible = false;
 				//Get the path of specified file
 				string filePath = openFileDialog1.FileName;
 
@@ -331,9 +332,12 @@ namespace PLCEmulator
 					AnalogInputs inputs = mcc.AnalogBoards.AnalogBoard.AnalogInputs;
 					for(int i = 1; i < inputs.AnalogChannel.Count; i++) // skip ipaddress input
 					{
-						if(i <= analogInputLabels.Count)
+						// Find the label whose Text is "channel " + inputs.AnalogChannel[i].Channel and set its Text to the Name
+						string searchText = "Channel " + inputs.AnalogChannel[i].Channel;
+						int labelIndex = analogInputLabels.FindIndex(lbl => lbl.Text == searchText);
+						if(labelIndex != -1)
 						{
-							analogInputLabels[i-1].Text = inputs.AnalogChannel[i].Name;
+							analogInputLabels[labelIndex].Text = inputs.AnalogChannel[i].Name;
 						}
 					}
 					folderNameLabel.Text = fileFolder;
